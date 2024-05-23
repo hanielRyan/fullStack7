@@ -51,7 +51,7 @@ verifyOtp();
 },[otp])
 
 const getEmail = async()=>{
-    const email = await axios.get("http://localhost:5000/otp/email",{withCredentials:true});
+    const email = await axios.get("https://todos-task-manager-back.onrender.com/otp/email",{withCredentials:true});
      setEmail(email.data);
 }
 
