@@ -3,7 +3,7 @@ import { MotionDiv } from './MotionDiv';
 import Status from './Status';
 import DeleteButton from './deleteButton';
 const getTodo = async(email:string | null | undefined) => { 
-    const response = await fetch(`http://localhost:5000/post/${email}`,{cache:"no-store"});;
+    const response = await fetch(`https://todos-task-manager-back.onrender.com/post/${email}`,{cache:"no-store"});;
     const todo = await response.json();
     return todo;
 }

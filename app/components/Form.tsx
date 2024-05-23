@@ -37,7 +37,7 @@ export default function Form({signin}:props){
 
     const signUp = async(data:unknown) => {
         try{
-          const response = await axios.post("http://localhost:5000/user/createUser",{data},{withCredentials:true});
+          const response = await axios.post("https://todos-task-manager-back.onrender.com/user/createUser",{data},{withCredentials:true});
           return response;
         }catch(err){
 setError((err as {response:{data:string}}).response.data);

@@ -38,7 +38,7 @@ const verifyOtp = async()=>{
     const isFilled = otp.every(dig => dig !== "" && dig !== " ");
     if(isFilled){
         try{
-            await axios.post("http://localhost:5000/otp/verifyOtp",{otp:otp.join("")},{withCredentials:true});
+            await axios.post("https://todos-task-manager-back.onrender.com/otp/verifyOtp",{otp:otp.join("")},{withCredentials:true});
             router.push("/login");
         }catch(err){
             setError((err as {response:{data:string}}).response.data);

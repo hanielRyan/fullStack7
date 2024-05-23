@@ -2,6 +2,6 @@
 import axios from "axios";
 import { revalidatePath } from "next/cache";
 export const updateStatus = async(_id:string)=>{
-    await axios.get(`http://localhost:5000/post/updateStatus/${_id}`);
+    await axios.get(`https://todos-task-manager-back.onrender.com/post/updateStatus/${_id}`);
     revalidatePath("/home");
 }

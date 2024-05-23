@@ -21,11 +21,9 @@ providers: [
                     await connectDB();
                     const email = credentials?.email;
                     const password = credentials?.password;
-                    console.log(password)
                     const user = await userModel.findOne({email}).exec();
                     if(user && user.verified === true){
                         const passwordMatch = password && await bcrypt.compare(password,user.password);
-                        console.log("passwordMatch",passwordMatch)
                         if(passwordMatch){
                             return user;
                         }else{
@@ -35,7 +33,6 @@ providers: [
                         return null;
                     }
                 }catch(err:any){
-                    console.log("err",err.message);
                     return  null;
                 }
             }

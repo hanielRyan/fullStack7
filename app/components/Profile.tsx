@@ -1,6 +1,5 @@
 "use client";
 import {   useState } from "react";
-import { useSession } from "next-auth/react";
 import { uploadPic } from "../actions/uploadPic";
 import {signOut} from "next-auth/react";
 import { updates } from "../redux/features/Mode";
