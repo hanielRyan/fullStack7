@@ -16,9 +16,10 @@ export default function Form({signin}:props){
     const {register,handleSubmit,formState:{errors}}=useForm();
     const router = useRouter();
     const [error,setError]=useState("");
-
+const [disabled,setDisabled]=useState(false);
 
     const login = async(data:unknown)=>{
+        setDisabled(true);
         try{
           const res =  await signIn("credentials",{
                 email:(data as {email:string}).email,
@@ -36,6 +37,7 @@ export default function Form({signin}:props){
     }
 
     const signUp = async(data:unknown) => {
+        setDisabled(true);
         try{
           const response = await axios.post("https://todos-task-manager-back.onrender.com/user/createUser",{data},{withCredentials:true});
           return response;
@@ -48,6 +50,7 @@ setError((err as {response:{data:string}}).response.data);
 
 if(signin){
     const response = await signUp(data);
+    setDisabled(false);
     if(response){
         router.push("/otp");
     }else{
@@ -56,6 +59,7 @@ return null;
 
 }else{
  await login(data);
+ setDisabled(false);
 }
            
     
@@ -94,7 +98,7 @@ return null;
     maxLength:7
 })} error={errors?.password ? true : false} helperText={errors?.password?.type === "required" ? "password is required." : errors?.password?.type === "minLength" ? "password should be more than 5 characters"  : errors?.password?.type === "maxLength" ? "password should be below 7 characters":undefined} type="password"/>
 
-<Button variant="contained" sx={{padding:"10px"}} type="submit">register</Button>
+<Button variant="contained" sx={{padding:"10px"}} type="submit" disabled={disabled}>register</Button>
 {error ? <Alert severity="error">{error}</Alert> : null}
 <Box sx={{display:"flex",justifyContent:"center",alignItems:"center",gap:"10px"}}>
 <Box sx={{flexGrow:1,height:"1px",backgroundColor:"black"}}></Box>
