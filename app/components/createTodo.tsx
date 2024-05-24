@@ -10,10 +10,11 @@ export default function CreateTodo({setOpen,data,setOptimisticTodo}:{setOptimist
         e.preventDefault()
         const post = {
             email:data.user.email,
+            status:"pending",
             content
         }
         setOpen(false);
-        setOptimisticTodo((prev:[{content:string,email:string}])=>[...prev,post]);
+        setOptimisticTodo((prev:[{content:string,email:string}])=>[post,...prev]);
         await createTodos(post);
         setDisabled(true);
     }
