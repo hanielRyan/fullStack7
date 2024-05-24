@@ -12,7 +12,7 @@ export default  function Todo({todos,data}:{data:Session | null,todos:[{content:
         <Box sx={{ml:{md:"240px"},padding:"10px",mt:"80px"}}>
             <Modal data={data}  setOptimisticTodo={setOptimisticTodo}/>
         
-                {optimistcTodo.length ? optimistcTodo.reverse().map((todo:{content:string,email:string,status:string,_id:string})=>{
+                {optimistcTodo.length ? optimistcTodo.map((todo:{content:string,email:string,status:string,_id:string})=>{
 return   <MotionDiv initial={{opacity:0,y:-40}} key={todo._id} whileInView={{opacity:1,y:0}} layout>
   <Paper  sx={{display:"flex",alignItems:"center",mb:"20px",borderRadius:"10px",padding:"10px"}} elevation={3}>
     <Typography sx={{flexGrow:1}}>{todo.content}</Typography>
