@@ -19,13 +19,13 @@ export default function Form({signin}:props){
 const [disabled,setDisabled]=useState(false);
 
     const login = async(data:unknown)=>{
+        setDisabled(true);
         try{
           const res =  await signIn("credentials",{
                 email:(data as {email:string}).email,
                 password:(data as {password:string}).password,
                 redirect:false
             });
-            setDisabled(true);
             if(res?.ok){
             router.push("/home");
             }else{
@@ -50,11 +50,12 @@ setError((err as {response:{data:string}}).response.data);
 
 if(signin){
     const response = await signUp(data);
-    setDisabled(false);
     if(response){
         router.push("/otp");
+        setDisabled(false);
     }else{
-return null;
+        setDisabled(false);
+
     }
 
 }else{
