@@ -1,27 +1,25 @@
+"use client";
 import { Box, Typography, IconButton,Tooltip,Paper } from '@mui/material';
 import { MotionDiv } from './MotionDiv';
 import Status from './Status';
+import Modal from "../components/Modal";
+import { useOptimistic } from 'react';
 import DeleteButton from './deleteButton';
-const getTodo = async(email:string | null | undefined) => { 
-    const response = await fetch(`https://todos-task-manager-back.onrender.com/post/${email}`,{cache:"no-store"});;
-    const todo = await response.json();
-    return todo;
-}
-export default async function Todo({email}:{email:string | null | undefined}){
-    const todos = await getTodo(email);
-
-    
+import { Session } from 'next-auth';
+export default  function Todo({todos,data}:{data:Session | null,todos:[{content:string,email:string,status:string,_id:string}]}) {
+    const [optimistcTodo,setOptimisticTodo]=useOptimistic(todos);
     return(
         <Box sx={{ml:{md:"240px"},padding:"10px",mt:"80px"}}>
+            <Modal data={data}  setOptimisticTodo={setOptimisticTodo}/>
         
-                {todos.length ? todos.reverse().map((todo:{content:string,email:string,status:string,_id:string})=>{
+                {optimistcTodo.length ? optimistcTodo.reverse().map((todo:{content:string,email:string,status:string,_id:string})=>{
 return   <MotionDiv initial={{opacity:0,y:-40}} key={todo._id} whileInView={{opacity:1,y:0}} layout>
   <Paper  sx={{display:"flex",alignItems:"center",mb:"20px",borderRadius:"10px",padding:"10px"}} elevation={3}>
     <Typography sx={{flexGrow:1}}>{todo.content}</Typography>
     <Status todo={todo}/>
     <Tooltip title="delete">
     <IconButton>
-<DeleteButton _id={todo._id}/>
+<DeleteButton _id={todo._id} setOptimisticTodo={setOptimisticTodo}/>
     </IconButton>
     </Tooltip>
 

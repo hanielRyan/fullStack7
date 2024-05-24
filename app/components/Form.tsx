@@ -28,6 +28,7 @@ const [disabled,setDisabled]=useState(false);
             });
             if(res?.ok){
             router.push("/home");
+            setDisabled(false);
             }else{
               setError("invalid credentials");
             }
@@ -60,7 +61,6 @@ if(signin){
 
 }else{
  await login(data);
- setDisabled(false);
 }
            
     

@@ -3,7 +3,7 @@ import { TextField, Button } from "@mui/material";
 import LocalPostOfficeIcon from '@mui/icons-material/LocalPostOffice';
 import { createTodos } from "../actions/createTodo";
 import  { useState,useEffect } from "react";
-export default function CreateTodo({setOpen,data}:{data:any,setOpen:React.Dispatch<React.SetStateAction<boolean>>}){
+export default function CreateTodo({setOpen,data,setOptimisticTodo}:{setOptimisticTodo:React.Dispatch<React.SetStateAction<any>>,data:any,setOpen:React.Dispatch<React.SetStateAction<boolean>>}){
     const [content,setContent]=useState("");
     const [disabled,setDisabled]=useState(false);
     const createTodo = async(e:React.FormEvent) => {
@@ -13,6 +13,7 @@ export default function CreateTodo({setOpen,data}:{data:any,setOpen:React.Dispat
             content
         }
         setOpen(false);
+        setOptimisticTodo((prev:[{content:string,email:string}])=>[...prev,post]);
         await createTodos(post);
         setDisabled(true);
     }

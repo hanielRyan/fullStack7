@@ -1,6 +1,5 @@
 import { MotionDiv } from "@/app/components/MotionDiv";
 import Status from "@/app/components/Status";
-import DeleteButton from "@/app/components/deleteButton";
 import { Box, IconButton, Paper, Tooltip, Typography } from "@mui/material";
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "@/app/libs/authOptions";
@@ -24,11 +23,6 @@ export default async function Done(){
      <Paper  sx={{display:"flex",alignItems:"center",mb:"20px",borderRadius:"10px",padding:"10px"}} elevation={3}>
        <Typography sx={{flexGrow:1}}>{todo.content}</Typography>
        <Status todo={todo}/>
-       <Tooltip title="delete">
-       <IconButton>
-   <DeleteButton _id={todo._id}/>
-       </IconButton>
-       </Tooltip>
    
    </Paper>
    </MotionDiv>

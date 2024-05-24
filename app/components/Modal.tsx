@@ -4,7 +4,7 @@ import { useState } from "react";
 import {Modal,Box,Avatar,Paper, Typography,SpeedDial,SpeedDialAction,SpeedDialIcon } from "@mui/material";
 import CreateTodo from "./createTodo";
 import AddRoundedIcon from '@mui/icons-material/AddRounded';
-export default function ModalComponent({data}:{data:any}){
+export default function ModalComponent({data,setOptimisticTodo}:{data:any,setOptimisticTodo:React.Dispatch<React.SetStateAction<any>>}){
     const [open,setOpen]=useState(false);
     const handleChange=()=>{
         setOpen(true);
@@ -24,7 +24,7 @@ export default function ModalComponent({data}:{data:any}){
 <Avatar src={data.user.image} sx={{height:"60px",width:"60px"}}/>
 <Typography textAlign="center" sx={{color:"text.primary"}}>{data.user.name}</Typography>
 </Box>
-<CreateTodo setOpen={setOpen} data={data}/>
+<CreateTodo setOpen={setOpen} data={data} setOptimisticTodo={setOptimisticTodo}/>
 
     </Box>
 </Modal>
