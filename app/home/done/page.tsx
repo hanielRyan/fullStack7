@@ -27,7 +27,7 @@ export default async function Done(){
    </Paper>
    </MotionDiv>
        }) : 
-       <Box sx={{display:"grid",placeItems:"center",height:"70vh"}}>
+       <Box sx={{display:"grid",placeItems:"center",height:"80vh"}}>
                    <Typography sx={{fontSize:{xs:"20px",sm:"30px",md:"50px"},textWrap:"wrap",textAlign:"center"}} >You haven&apos;t completed any todo yet😊.</Typography> 
                    </Box>}
         </Box>

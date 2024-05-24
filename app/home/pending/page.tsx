@@ -28,7 +28,7 @@ export default async function Pending(){
     
     </Paper>
     </MotionDiv>
-        }) : <Box sx={{display:"grid",placeItems:"center",height:"70vh"}}>
+        }) : <Box sx={{display:"grid",placeItems:"center",height:"80vh"}}>
         <Typography sx={{fontSize:{xs:"20px",sm:"30px",md:"50px"},textWrap:"wrap",textAlign:"center"}} >All your todos are completed😊.</Typography> 
         </Box>}
          </Box>

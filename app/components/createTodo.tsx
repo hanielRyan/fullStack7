@@ -14,7 +14,7 @@ export default function CreateTodo({setOpen,data,setOptimisticTodo}:{setOptimist
             content
         }
         setOpen(false);
-        setOptimisticTodo((prev:[{content:string,email:string}])=>[post,...prev]);
+        setOptimisticTodo((prev:[{content:string,email:string}])=>[...prev,post]);
         await createTodos(post);
         setDisabled(true);
     }
