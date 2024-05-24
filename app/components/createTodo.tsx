@@ -1,5 +1,6 @@
 "use client";
 import { TextField, Button } from "@mui/material";
+import { startTransition } from "react";
 import LocalPostOfficeIcon from '@mui/icons-material/LocalPostOffice';
 import { createTodos } from "../actions/createTodo";
 import  { useState,useEffect } from "react";
@@ -14,7 +15,9 @@ export default function CreateTodo({setOpen,data,setOptimisticTodo}:{setOptimist
             content
         }
         setOpen(false);
-        setOptimisticTodo((prev:[{content:string,email:string}])=>[...prev,post]);
+        startTransition(()=>{
+            setOptimisticTodo((prev:[{content:string,email:string}])=>[...prev,post]);
+        })
         await createTodos(post);
         setDisabled(true);
     }
