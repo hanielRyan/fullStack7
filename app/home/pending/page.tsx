@@ -7,7 +7,7 @@ import { MotionDiv } from "@/app/components/MotionDiv";
 import Status from "@/app/components/Status";
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "@/app/libs/authOptions";
-import { Box, IconButton, Paper, Tooltip, Typography } from "@mui/material";
+import { Box, Paper, Typography } from "@mui/material";
 
 const getPendingTodos=async()=>{
     const data = await getServerSession(authOptions);
