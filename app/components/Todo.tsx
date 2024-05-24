@@ -7,7 +7,7 @@ import { useOptimistic } from 'react';
 import DeleteButton from './deleteButton';
 import { Session } from 'next-auth';
 export default  function Todo({todos,data}:{data:Session | null,todos:[{content:string,email:string,status:string,_id:string}]}) {
-    const [optimistcTodo,setOptimisticTodo]=useOptimistic(todos.reverse());
+    const [optimistcTodo,setOptimisticTodo]=useOptimistic(todos);
     return(
         <Box sx={{ml:{md:"240px"},padding:"10px",mt:"80px"}}>
             <Modal data={data}  setOptimisticTodo={setOptimisticTodo}/>
