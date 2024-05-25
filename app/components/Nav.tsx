@@ -4,7 +4,7 @@ import Profile from "./Profile";
 import dynamic from "next/dynamic";
 import Hamburger from "./Hamburger";
 const dancingScript = Dancing_Script({subsets:["latin"]});
-const MotionDiv = dynamic(() => import("./MotionDiv"), { ssr: false });
+const MotionDiv = dynamic(() => import("./MotionDiv"), { ssr: true });
 export default function Nav({data}:{data:any}){
     return(
         <AppBar position="fixed">

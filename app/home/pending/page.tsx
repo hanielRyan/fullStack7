@@ -15,26 +15,24 @@ const getPendingTodos=async()=>{
     return pendingTodos;
 }
 
-const MotionDiv = dynamic(() => import("@/app/components/MotionDiv"), { ssr: false });
+const MotionDiv = dynamic(() => import("@/app/components/MotionDiv"), { ssr: true });
 
 export default async function Pending(){
     const pendingTodos = await getPendingTodos();
     return(
-    //     <Box sx={{ml:{md:"240px"},padding:"10px",mt:"80px"}}>
-    //     {pendingTodos.length ? pendingTodos.reverse().map((todo:{content:string,email:string,status:string,_id:string})=>{
-    //   return   <MotionDiv initial={{opacity:0,y:-40}} key={todo._id} whileInView={{opacity:1,y:0}} layout>
-    //   <Paper  sx={{display:"flex",alignItems:"center",mb:"20px",borderRadius:"10px",padding:"10px"}} elevation={3}>
-    //     <Typography sx={{flexGrow:1}}>{todo.content}</Typography>
-    //     <Status todo={todo}/>
+        <Box sx={{ml:{md:"240px"},padding:"10px",mt:"80px"}}>
+        {pendingTodos.length ? pendingTodos.reverse().map((todo:{content:string,email:string,status:string,_id:string})=>{
+      return   <MotionDiv initial={{opacity:0,y:-40}} key={todo._id} whileInView={{opacity:1,y:0}} layout>
+      <Paper  sx={{display:"flex",alignItems:"center",mb:"20px",borderRadius:"10px",padding:"10px"}} elevation={3}>
+        <Typography sx={{flexGrow:1}}>{todo.content}</Typography>
+        <Status todo={todo}/>
     
-    // </Paper>
-    // </MotionDiv>
-    //     }) : <Box sx={{display:"grid",placeItems:"center",height:"80vh"}}>
-    //     <Typography sx={{fontSize:{xs:"20px",sm:"30px",md:"50px"},textWrap:"wrap",textAlign:"center"}} >All your todos are completed😊.</Typography> 
-    //     </Box>}
-    //      </Box>
-    <>
-    </>
+    </Paper>
+    </MotionDiv>
+        }) : <Box sx={{display:"grid",placeItems:"center",height:"80vh"}}>
+        <Typography sx={{fontSize:{xs:"20px",sm:"30px",md:"50px"},textWrap:"wrap",textAlign:"center"}} >All your todos are completed😊.</Typography> 
+        </Box>}
+         </Box>
     )
 }
 

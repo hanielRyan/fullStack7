@@ -19,7 +19,7 @@ export default async function Home(){
     const todos = await getTodo(data?.user?.email);
     return(
      <Box>
-{/* <Todo  todos={todos} data={data}/> */}
+<Todo  todos={todos} data={data}/>
      </Box>
     )
 }

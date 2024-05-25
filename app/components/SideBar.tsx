@@ -4,7 +4,7 @@ import CheckSharpIcon from '@mui/icons-material/CheckSharp';
 import Link from "next/link";
 import dynamic from "next/dynamic";
 import HomeIcon from '@mui/icons-material/Home';
-const MotionDiv = dynamic(() => import("./MotionDiv"), { ssr: false });
+const MotionDiv = dynamic(() => import("./MotionDiv"), { ssr: true });
 export default function SideBar(){
     return(
         <>
