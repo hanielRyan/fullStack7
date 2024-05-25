@@ -2,8 +2,9 @@ import {Drawer,List,ListItem,ListItemIcon,ListItemButton,ListItemText,Divider,To
 import PriorityHighIcon from '@mui/icons-material/PriorityHigh';
 import CheckSharpIcon from '@mui/icons-material/CheckSharp';
 import Link from "next/link";
+import dynamic from "next/dynamic";
 import HomeIcon from '@mui/icons-material/Home';
-import { MotionDiv } from "./MotionDiv";
+const MotionDiv = dynamic(() => import("./MotionDiv"), { ssr: false });
 export default function SideBar(){
     return(
         <>

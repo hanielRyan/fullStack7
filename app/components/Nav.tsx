@@ -1,9 +1,10 @@
 import { AppBar, Toolbar, Typography,Box } from "@mui/material";
 import {Dancing_Script} from "next/font/google";
 import Profile from "./Profile";
-import { MotionDiv } from "./MotionDiv";
+import dynamic from "next/dynamic";
 import Hamburger from "./Hamburger";
 const dancingScript = Dancing_Script({subsets:["latin"]});
+const MotionDiv = dynamic(() => import("./MotionDiv"), { ssr: false });
 export default function Nav({data}:{data:any}){
     return(
         <AppBar position="fixed">

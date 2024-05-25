@@ -1,11 +1,14 @@
 "use client";
 import { Box, Typography, IconButton,Tooltip,Paper } from '@mui/material';
-import { MotionDiv } from './MotionDiv';
+import dynamic from "next/dynamic";
 import Status from './Status';
 import Modal from "../components/Modal";
 import { useOptimistic } from 'react';
 import DeleteButton from './deleteButton';
 import { Session } from 'next-auth';
+
+const MotionDiv = dynamic(()=>import("./MotionDiv"),{ssr:false})
+
 export default  function Todo({todos,data}:{data:Session | null,todos:[{content:string,email:string,status:string,_id:string}]}) {
     const [optimistcTodo,setOptimisticTodo]=useOptimistic(todos);
     return(

@@ -2,8 +2,7 @@
 export const metadata={
     title:"Todos Task Manager | Pending"
 }
-
-import { MotionDiv } from "@/app/components/MotionDiv";
+import dynamic from "next/dynamic";
 import Status from "@/app/components/Status";
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "@/app/libs/authOptions";
@@ -15,6 +14,8 @@ const getPendingTodos=async()=>{
     const pendingTodos = await response.json();
     return pendingTodos;
 }
+
+const MotionDiv = dynamic(() => import("@/app/components/MotionDiv"), { ssr: false });
 
 export default async function Pending(){
     const pendingTodos = await getPendingTodos();
