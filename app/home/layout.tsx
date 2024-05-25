@@ -6,8 +6,6 @@ export default async function Layout({children}:{children:React.ReactNode}){
     const data = await getServerSession(authOptions);
     return(
         <main>
-        <Nav data={data}/>
-        <SideBar/>
         {children}
         </main>
     )
