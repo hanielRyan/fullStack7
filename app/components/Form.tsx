@@ -2,16 +2,17 @@
 type props = {
     signin:boolean,
 }
+import dynamic from "next/dynamic";
 
 import { signIn } from "next-auth/react";
 import { TextField,Button, Typography,Box,styled,Alert } from "@mui/material";
 import axios from  "axios";
 import { useRouter } from "next/navigation";
 import GoogleIcon from '@mui/icons-material/Google';
-import { MotionDiv } from "./MotionDiv";
 import Link from "next/link";
 import {useForm} from "react-hook-form";
 import { useState } from "react";
+const MotionDiv = dynamic(() => import("./MotionDiv"), { ssr: false });
 export default function Form({signin}:props){
     const {register,handleSubmit,formState:{errors}}=useForm();
     const router = useRouter();

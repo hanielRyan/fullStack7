@@ -4,7 +4,8 @@ import { Box, TextField, Typography } from "@mui/material";
 import { useRouter } from "next/navigation";
 import {Alert} from "@mui/material";
 import axios from "axios";
-import { MotionDiv } from "./MotionDiv";
+import dynamic from "next/dynamic";
+const MotionDiv = dynamic(() => import("./MotionDiv"), { ssr: false });
 export default function OtpField(){
     const [otp,setOtp] = useState(["","","",""]);
     const [error,setError]=useState<string>("");
