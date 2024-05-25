@@ -3,7 +3,7 @@ type props = {
     signin:boolean,
 }
 import dynamic from "next/dynamic";
-
+import { useEffect } from "react";
 import { signIn } from "next-auth/react";
 import { TextField,Button, Typography,Box,styled,Alert } from "@mui/material";
 import axios from  "axios";
@@ -37,6 +37,18 @@ const [disabled,setDisabled]=useState(false);
             console.log("err from loging in ",err);
         }
     }
+
+    useEffect(()=>{
+
+        const fetchData = async()=>{
+            await axios.get("https://todos-task-manager-back.onrender.com/");
+        } 
+
+        const intervalId = setInterval(fetchData, 5000); // Call every 5 seconds
+
+        return () => clearInterval(intervalId); // Cleanup function to prevent memory leaks
+
+    },[])
 
     const signUp = async(data:unknown) => {
         setDisabled(true);
