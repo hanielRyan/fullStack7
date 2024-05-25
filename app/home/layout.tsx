@@ -5,10 +5,10 @@ import { getServerSession } from "next-auth/next";
 export default async function Layout({children}:{children:React.ReactNode}){
     const data = await getServerSession(authOptions);
     return(
-        <div>
+        <main>
         <Nav data={data}/>
         <SideBar/>
         {children}
-        </div>
+        </main>
     )
 }
