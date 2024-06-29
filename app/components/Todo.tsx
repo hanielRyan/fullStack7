@@ -42,7 +42,7 @@ return   <MotionDiv initial={{opacity:0,y:-40}} key={todo._id || index} whileInV
             <Typography sx={{fontSize:{xs:"20px",sm:"30px",md:"50px"},textWrap:"wrap",textAlign:"center"}} >Create a todo to view it 😊.</Typography> 
             </Box>}
 
-            <SpeedDial ariaLabel="speed dial" icon={<SpeedDialIcon/>} sx={{position:"absolute",bottom:16,right:16}}>
+            <SpeedDial ariaLabel="speed dial" icon={<SpeedDialIcon/>} sx={{position:"fixed",bottom:16,right:16}}>
 <SpeedDialAction icon={<AddRoundedIcon/>} tooltipTitle="create todo" onClick={handleChange} />
 </SpeedDial>
 
