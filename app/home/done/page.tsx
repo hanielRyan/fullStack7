@@ -10,7 +10,7 @@ const MotionDiv = dynamic(() => import("@/app/components/MotionDiv"), { ssr: fal
 
 const getDoneTodos=async()=>{
     const data = await getServerSession(authOptions);
-    const response = await fetch(`https://todos-task-manager-back.onrender.com/post/done/${data?.user?.email}`,{cache:"no-store"});
+    const response = await fetch(`https://full-stack7back.vercel.app/post/done/${data?.user?.email}`,{cache:"no-store"});
     const doneTodos = await response.json();
     return doneTodos;
 }
