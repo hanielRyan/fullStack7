@@ -8,7 +8,7 @@ export const metadata = {
 import { getServerSession } from "next-auth/next";
 
 const getTodo = async(email:string | null | undefined) => { 
-    const response = await fetch(`https://todos-task-manager-back.onrender.com/post/${email}`,{cache:"no-store"});
+    const response = await fetch(`https://full-stack7back.vercel.app/post/${email}`,{cache:"no-store"});
     const todo = await response.json();
     return todo;
 }
