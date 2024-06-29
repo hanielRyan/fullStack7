@@ -1,6 +1,7 @@
 "use client";
 import {   useState } from "react";
 import { uploadPic } from "../actions/uploadPic";
+import { useSession } from "next-auth/react";
 import {signOut} from "next-auth/react";
 import { updates } from "../redux/features/Mode";
 import {useDispatch,useSelector } from "react-redux";
@@ -9,6 +10,7 @@ export default function  Profile({data}:{data:any}){
     const dispatch = useDispatch();
     const mode = useSelector((state:unknown)=>(state as {mode:{theme:string}}).mode.theme);
     const [anchorEl,setAnchorEl]=useState<null | HTMLElement>(null);
+    const {data:session,update}=useSession();
     const open = Boolean(anchorEl);
     const handleClick = (e:React.MouseEvent<HTMLDivElement>) =>{
         setAnchorEl(e.currentTarget);
@@ -25,6 +27,7 @@ setAnchorEl(null);
 
     const handlePic = async(e: React.ChangeEvent<HTMLInputElement>)=>{
         const img = e?.target?.files![0];
+        update({image:URL.createObjectURL(img)});
 const formData = new FormData();
 img && formData.append("img",img);
 formData.append("email",data.user.email);
@@ -39,7 +42,7 @@ await uploadPic(formData);
     return(
         <Box sx={{display:"flex",gap:"10px",alignItems:"center"}}>
             <Typography variant="h6">{data.user.name}</Typography>
-        <Avatar src={data.user.image} sx={{height:"60px",width:"60px",objectFit:"contain"}} onClick={handleClick} />
+        <Avatar src={session?.user?.image ||""} sx={{height:"60px",width:"60px",objectFit:"contain"}} onClick={handleClick} />
         <Menu open={open} onClose={onClose} anchorEl={anchorEl}>
             <MenuItem onClick={logOut}>Logout</MenuItem>
             <Divider/>
