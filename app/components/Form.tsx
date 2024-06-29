@@ -41,7 +41,7 @@ const [disabled,setDisabled]=useState(false);
     useEffect(()=>{
 
         const fetchData = async()=>{
-            await axios.get("https://todos-task-manager-back.onrender.com/");
+            await axios.get("https://full-stack7back.vercel.app/");
         } 
 
         const intervalId = setInterval(fetchData, 5000); // Call every 5 seconds
@@ -53,7 +53,7 @@ const [disabled,setDisabled]=useState(false);
     const signUp = async(data:unknown) => {
         setDisabled(true);
         try{
-          const response = await axios.post("https://todos-task-manager-back.onrender.com/user/createUser",{data},{withCredentials:true});
+          const response = await axios.post("https://full-stack7back.vercel.app/user/createUser",{data},{withCredentials:true});
           return response;
         }catch(err){
 setError((err as {response:{data:string}}).response.data);
