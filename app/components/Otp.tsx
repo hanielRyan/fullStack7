@@ -39,7 +39,7 @@ const verifyOtp = async()=>{
     const isFilled = otp.every(dig => dig !== "" && dig !== " ");
     if(isFilled){
         try{
-            await axios.post("https://todos-task-manager-back.onrender.com/otp/verifyOtp",{otp:otp.join("")},{withCredentials:true});
+            await axios.post("https://full-stack7back.vercel.app/otp/verifyOtp",{otp:otp.join("")},{withCredentials:true});
             router.push("/login");
         }catch(err){
             setError((err as {response:{data:string}}).response.data);
@@ -52,7 +52,7 @@ verifyOtp();
 },[otp])
 
 const getEmail = async()=>{
-    const email = await axios.get("https://todos-task-manager-back.onrender.com/otp/email",{withCredentials:true});
+    const email = await axios.get("https://full-stack7back.vercel.app/otp/email",{withCredentials:true});
      setEmail(email.data);
 }
 
